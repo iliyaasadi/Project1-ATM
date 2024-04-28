@@ -28,6 +28,15 @@ Notice that , in my code , if the user do not enter any password for ATM entry ,
 
 
 
+## Contributing
+
+Contributions are always welcome!If you have any Ideas about My code to improve it or make it more optimal , you can open an issue .
+
+
+
+## Demo
+
+Insert gif or link to demo
 
 
 
@@ -41,26 +50,24 @@ Notice that , in my code , if the user do not enter any password for ATM entry ,
 
 Answer : YES ; I tried hard to make the code clear( with clean code rules) and easy to understand 
 
+## Features
+
+- getting password and password validating
+- different types of action like transfering money , changing password , declare the amount of money and getting money from the credit card . 
+- each proccess has a " successfully done " panel 
 
 
 ## Screenshots
 
-![App Screenshot](![Uploading Screenshot 1403-02-09 at 6.57.14 in the evening.png…]()
+Starting panel : Choosing language : 
+![App Screenshot](https://github.com/iliyaasadi/Project1-ATM/assets/153519525/6457a592-ec32-401e-b6f9-1dcea7fb2a37)
+
+Main Panel : your desire action : 
+![App Screenshot](https://github.com/iliyaasadi/Project1-ATM/assets/153519525/8a4a73c3-1dbe-457d-84f6-5f85bbd204e8)
 
 
 
 
-
-
-
-
-
-
-## FAQ
-
-#### Question 1 : Is it the code clear to understand what is going on ?
-
-Answer : YES ; I tried hard to make the code clear( with clean code rules) and easy to understand 
 
 
 
