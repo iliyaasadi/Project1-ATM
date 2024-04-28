@@ -34,9 +34,6 @@ Contributions are always welcome!If you have any Ideas about My code to improve 
 
 
 
-## Demo
-
-Insert gif or link to demo
 
 
 
@@ -64,6 +61,7 @@ Starting panel : Choosing language :
 
 Main Panel : your desire action : 
 ![App Screenshot](https://github.com/iliyaasadi/Project1-ATM/assets/153519525/8a4a73c3-1dbe-457d-84f6-5f85bbd204e8)
+
 
 
 
