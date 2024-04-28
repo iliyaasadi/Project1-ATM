@@ -22,9 +22,30 @@ which maybe a user encounter them .
 Notice that , in my code , if the user do not enter any password for ATM entry , and then click on the next(تایید) then it will go to the next panel .
 
 
-## Authors
+## Author
 
 - [@Iliyaasadi](https://github.com/iliyaasadi)
+
+
+
+
+
+
+
+
+
+
+## FAQ
+
+#### Question 1 : Is it the code clear to understand what is going on ?
+
+Answer : YES ; I tried hard to make the code clear( with clean code rules) and easy to understand 
+
+
+
+## Screenshots
+
+![App Screenshot](![Uploading Screenshot 1403-02-09 at 6.57.14 in the evening.png…]()
 
 
 
