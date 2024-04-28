@@ -1,5 +1,6 @@
 # Project1-ATM
 
+
 # ATM
 
 A brief description of what this project does and who it's for
@@ -42,7 +43,4 @@ Answer : YES ; I tried hard to make the code clear( with clean code rules) and e
 
 
 
-## Screenshots
-
-![App Screenshot](![Uploading Screenshot 1403-02-09 at 6.57.14 in the evening.png…]()
 
