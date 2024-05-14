@@ -5,10 +5,30 @@ import java.awt.event.ActionListener;
 import javax.swing.event.* ;
 
 //در این برنامه ی ATM  تلاش شده شبیه سازی خوبی نسبت به ATM انجام شود
-//موارد تایید درستی یا نادرستی رمز و تعیین موجودی و تغییر موجودی بعد از برداشت و کارت به کارت در این برنامه در نظر گرفته نشده است
+// تایید درستی یا نادرستی رمز در این برنامه در نظر گرفته نشده است
 
 
 public class Main {
+
+    private static long money = 500_000 ;
+
+    public static void setMoney(long money) {
+        Main.money = money;
+    }
+
+    public static long getMoney() {
+        return Main.money;
+    }
+    private static int password = 1234 ;
+
+    public static int getPassword() {
+        return password;
+    }
+
+    public static void setPassword(int password) {
+        Main.password = password;
+    }
+
     public static void main(String[] args) {
 
         JFrame frame = new JFrame("ATM" );
@@ -39,19 +59,26 @@ public class Main {
         button2.setFont(new Font(Font.SANS_SERIF , Font.BOLD , 35));
         button2.setBounds(0 , 300 , 200 , 90);
 
+
         JLabel welcoming2 = new JLabel("Choose Language") ;
         welcoming2.setFont(new Font(Font.SANS_SERIF , Font.BOLD , 20));
         welcoming2.setBounds(250 , 250 , 200 , 200);
 
         panel1.add(button1) ;
+        button1.setVisible(true);
         panel1.add(button2) ;
+        button2.setVisible(true);
         panel1.add(welcoming) ;
+        welcoming.setVisible(true);
         panel1.add(welcoming2) ;
+        welcoming2.setVisible(true);
+        panel1.setVisible(true);
         frame.add(panel1) ;
 
         JPanel secondPanel = new JPanel() ;
         secondPanel.setLayout(null);
         secondPanel.setBackground(Color.cyan);
+
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -83,7 +110,6 @@ public class Main {
                         secondPanel.removeAll();
                         frame.revalidate();
                         frame.repaint();
-
                     }
                 });
 
@@ -100,6 +126,7 @@ public class Main {
                 continueButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
+
 
                         mainPage.setBounds(secondPanel.getBounds());
                         frame.remove(secondPanel);
@@ -137,7 +164,7 @@ public class Main {
 
                         mainPage.add(changePass) ;
                         mainPage.add(moojodi) ;
-                        long money = 558_760_000 ;
+                        //long money = 558_760_000 ;
                         mainPage.add(getcash) ;
                         mainPage.add(transfer) ;
                         mainPage.add(backLastPage) ;
@@ -325,7 +352,7 @@ public class Main {
 
                                                 JLabel error = new JLabel("رمز جدید را به درستی وارد کنید!");
                                                 error.setForeground(Color.red);
-                                                error.setFont(new Font(Font.SANS_SERIF, Font.BOLD , 25));
+                                                error.setFont(new Font(Font.SANS_SERIF, Font.BOLD , 20));
                                                 error.setBounds(350, 270, 300, 150);
                                                 errorPanel.add(error);
 
@@ -424,7 +451,7 @@ public class Main {
                                 yourInventory.setBounds(600 , 200 , 200 , 100);
                                 thirdPanel.add(yourInventory) ;
 
-                                String s = String.valueOf(money) ; //تبدیل عدد فرضی داده شده توسط خودم به عنوان موجودی اولیه به رشته
+                                String s = String.valueOf(getMoney()) ; //تبدیل عدد فرضی داده شده توسط خودم به عنوان موجودی اولیه به رشته
                                 JLabel moneyExist = new JLabel(s) ;
                                 moneyExist.setFont(new Font(Font.SANS_SERIF , Font.BOLD , 20));
                                 moneyExist.setBounds(  400, 200 , 200  ,100);
@@ -521,60 +548,130 @@ public class Main {
                                     @Override
                                     public void actionPerformed(ActionEvent e) {
 
-                                        successfulPanel.setBounds(thirdPanel.getBounds());
-                                        frame.remove(thirdPanel);
-                                        frame.add(successfulPanel) ;
-                                        frame.revalidate();
-                                        frame.repaint();
 
-                                        JLabel successfulMessage = new JLabel("عملیات با موفقیت انجام شد!") ;
-                                        successfulMessage.setForeground(Color.green);
-                                        successfulMessage.setFont(new Font(Font.SANS_SERIF , Font.BOLD , 25));
-                                        successfulMessage.setBounds(400 , 200 , 350 , 200);
-                                        successfulPanel.add(successfulMessage) ;
+                                        if( Long.parseLong(getAmount.getText()) > getMoney() ) {
+                                            JPanel noEnoughMoney = new JPanel();
+                                            noEnoughMoney.setLayout(null);
+                                            noEnoughMoney.setBackground(Color.cyan);
+                                            noEnoughMoney.setBounds(thirdPanel.getBounds());
 
-                                        JButton getCard = new JButton("دریافت کارت") ;
-                                        getCard.setFont(new Font(Font.SANS_SERIF , Font.BOLD , 35));
-                                        getCard.setBounds(500 , 400 , 500 , 300);
-                                        successfulPanel.add(getCard) ;
+                                            JLabel errorLabel = new JLabel("موجودی کافی نیست !");
+                                            errorLabel.setForeground(Color.RED);
+                                            errorLabel.setBounds(430, 200, 200, 200);
+                                            errorLabel.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
+                                            noEnoughMoney.add(errorLabel);
+                                            errorLabel.setVisible(true);
+                                            frame.remove(thirdPanel);
+                                            frame.add(noEnoughMoney);
+                                            frame.setVisible(true);
+                                            frame.revalidate();
+                                            frame.repaint();
 
-                                        JButton anotherProcess = new JButton("اگر قصد انجام عملیات دیگری را دارید کلیک کنید") ;
-                                        anotherProcess.setFont(new Font(Font.SANS_SERIF , Font.BOLD , 25));
-                                        anotherProcess.setBounds(0 , 400 , 500 , 300);
-                                        successfulPanel.add(anotherProcess) ;
+                                            JButton getCard = new JButton("دریافت کارت");
+                                            getCard.setFocusable(false);
+                                            getCard.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 35));
+                                            getCard.setBounds(500, 400, 500, 300);
+                                            noEnoughMoney.add(getCard);
+                                            getCard.setVisible(true);
 
-                                        getCard.addActionListener(new ActionListener() {
-                                            @Override
-                                            public void actionPerformed(ActionEvent e) {
+                                            JButton anotherProcess = new JButton("اگر قصد انجام عملیات دیگری را دارید کلیک کنید");
+                                            anotherProcess.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 25));
+                                            anotherProcess.setBounds(0, 400, 500, 300);
+                                            noEnoughMoney.add(anotherProcess);
+                                            anotherProcess.setVisible(true);
 
-                                                panel1.setBounds(successfulPanel.getBounds());
-                                                frame.remove(successfulPanel);
-                                                frame.add(panel1) ;
-                                                successfulPanel.removeAll();
-                                                secondPanel.removeAll();
-                                                thirdPanel.removeAll();
-                                                mainPage.removeAll();
-                                                frame.revalidate();
-                                                frame.repaint();
-
-                                            }
-                                        });
-
-                                        anotherProcess.addActionListener(new ActionListener() {
-                                            @Override
-                                            public void actionPerformed(ActionEvent e) {
-
-                                                mainPage.setBounds(successfulPanel.getBounds());
-                                                frame.remove(successfulPanel);
-                                                frame.add(mainPage) ;
-                                                thirdPanel.removeAll();
-                                                successfulPanel.removeAll();
-                                                frame.revalidate();
-                                                frame.repaint();
-                                            }
-                                        });
+                                            frame.add(noEnoughMoney);
 
 
+
+                                            getCard.addActionListener(new ActionListener() {
+                                                @Override
+                                                public void actionPerformed(ActionEvent e) {
+                                                    panel1.setBounds(noEnoughMoney.getBounds());
+                                                    frame.remove(noEnoughMoney);
+                                                    frame.add(panel1) ;
+                                                    noEnoughMoney.removeAll();
+                                                    thirdPanel.removeAll();
+                                                    mainPage.removeAll();
+                                                    secondPanel.removeAll();
+                                                    frame.revalidate();
+                                                    frame.repaint();
+
+                                                }
+                                            });
+
+                                            anotherProcess.addActionListener(new ActionListener() {
+                                                @Override
+                                                public void actionPerformed(ActionEvent e) {
+                                                    mainPage.setBounds(noEnoughMoney.getBounds());
+                                                    frame.remove(noEnoughMoney);
+                                                    frame.add(mainPage) ;
+                                                    noEnoughMoney.removeAll();
+                                                    thirdPanel.removeAll();
+                                                    frame.revalidate();
+                                                    frame.repaint();
+                                                }
+                                            });
+
+                                        }
+
+                                        else {
+
+                                            setMoney( getMoney() - Long.parseLong(getAmount.getText()));
+
+                                            successfulPanel.setBounds(thirdPanel.getBounds());
+                                            frame.remove(thirdPanel);
+                                            frame.add(successfulPanel);
+                                            frame.revalidate();
+                                            frame.repaint();
+
+                                            JLabel successfulMessage = new JLabel("عملیات با موفقیت انجام شد!");
+                                            successfulMessage.setForeground(Color.green);
+                                            successfulMessage.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 25));
+                                            successfulMessage.setBounds(400, 200, 350, 200);
+                                            successfulPanel.add(successfulMessage);
+
+                                            JButton getCard = new JButton("دریافت کارت");
+                                            getCard.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 35));
+                                            getCard.setBounds(500, 400, 500, 300);
+                                            successfulPanel.add(getCard);
+
+                                            JButton anotherProcess = new JButton("اگر قصد انجام عملیات دیگری را دارید کلیک کنید");
+                                            anotherProcess.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 25));
+                                            anotherProcess.setBounds(0, 400, 500, 300);
+                                            successfulPanel.add(anotherProcess);
+
+                                            getCard.addActionListener(new ActionListener() {
+                                                @Override
+                                                public void actionPerformed(ActionEvent e) {
+
+                                                    panel1.setBounds(successfulPanel.getBounds());
+                                                    frame.remove(successfulPanel);
+                                                    frame.add(panel1);
+                                                    successfulPanel.removeAll();
+                                                    secondPanel.removeAll();
+                                                    thirdPanel.removeAll();
+                                                    mainPage.removeAll();
+                                                    frame.revalidate();
+                                                    frame.repaint();
+
+                                                }
+                                            });
+
+                                            anotherProcess.addActionListener(new ActionListener() {
+                                                @Override
+                                                public void actionPerformed(ActionEvent e) {
+
+                                                    mainPage.setBounds(successfulPanel.getBounds());
+                                                    frame.remove(successfulPanel);
+                                                    frame.add(mainPage);
+                                                    thirdPanel.removeAll();
+                                                    successfulPanel.removeAll();
+                                                    frame.revalidate();
+                                                    frame.repaint();
+                                                }
+                                            });
+                                        }
                                     }
                                 });
 
@@ -663,11 +760,11 @@ public class Main {
                                 successfulPanel.setLayout(null);
                                 successfulPanel.setBackground(Color.cyan);
 
-
-
                                 continue2.addActionListener(new ActionListener() {
                                     @Override
                                     public void actionPerformed(ActionEvent e) {
+
+                                        setMoney( getMoney() - Long.parseLong(amountOfTransfer.getText()) );
 
                                         successfulPanel.setBounds(thirdPanel.getBounds());
                                         frame.remove(thirdPanel);
